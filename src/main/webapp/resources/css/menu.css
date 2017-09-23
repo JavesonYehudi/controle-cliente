@@ -1,0 +1,23 @@
+.menu{
+	width: 100%;
+	padding: 3% 0%;
+	text-align: center;
+}
+
+.active {
+	background-color: #b1b6e8;
+}
+
+.title {
+    background-color: rgb(63,81,181);
+    color: white;
+}
+
+.sub-title {
+	padding: 0;
+}
+
+a {
+	color: black;
+	text-decoration: none;
+}

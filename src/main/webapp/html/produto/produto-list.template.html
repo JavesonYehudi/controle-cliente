@@ -1,0 +1,30 @@
+<h1>Registro de Produtos</h1>
+
+<table st-table="produtos" st-safe-src="$ctrl.produtos" class="table table-striped">
+	<thead>
+	<tr>
+		<th st-sort="nome">Id</th>
+		<th st-sort="nome">Nome</th>
+		<th st-sort="nome">Valor</th>
+		<th st-sort="nome">Ações</th>
+	</tr>
+	<tr>
+		<th colspan="4"><input st-search="" class="form-control" placeholder="global search ..." type="text"/></th>
+	</tr>
+	</thead>
+	<tbody>
+	<tr ng-repeat="produto in produtos">
+		<td style="text-transform: uppercase;">{{produto.id}}</td>
+		<td style="text-transform: uppercase;">{{produto.nome}}</td>
+		<td style="text-transform: uppercase;">{{produto.valor}}</td>
+		<td style="text-transform: uppercase;"><a href="produto/{{produto.id}}">Editar</a></td>
+	</tr>
+	</tbody>
+	<tfoot>
+		<tr>
+			<td colspan="4" class="text-center">
+				<div st-pagination="" st-items-by-page="$ctrl.itemsByPage" st-displayed-pages="7"></div>
+			</td>
+		</tr>
+	</tfoot>
+</table>

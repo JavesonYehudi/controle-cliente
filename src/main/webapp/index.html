@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="controleClienteApp" >
+
+<head>
+    <base href="/controle-cliente/">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Marlene Joias</title>
+
+	<link rel="stylesheet" href="resources/css/geral.css">
+	<link rel="stylesheet" href="resources/css/loader.css">
+	<link rel="stylesheet" href="resources/css/menu.css">
+    
+    <!-- Angular Material style sheet -->
+	<link rel="stylesheet" href="resources/css/angular-material.min.css">
+
+	<!-- bootstrap style sheet -->
+	<link rel="stylesheet" href="resources/css/bootstrap.min.css">
+	<link rel="stylesheet" href="resources/css/bootstrap-theme.min.css">
+
+</head>
+
+<body>
+
+	<section layout="row" flex layout-fill ng-controller="SideNaveController">
+		<md-sidenav class="md-sidenav-left" md-component-id="left" md-is-locked-open="$mdMedia('gt-md')" md-whiteframe="4">
+			<md-toolbar class="md-theme-indigo">
+				<h1 class="md-toolbar-tools">MARLENE JOIAS</h1>
+			</md-toolbar>
+			<md-content layout-padding>
+				<ul>
+					<li>
+						<div class="menu title">
+							VENDAS
+						</div>
+						<ul id="compras" class="sub-title">
+							<li ng-class="{active: isActive('/compra')}" class="menu">
+								<div>
+									<a href="compra">LISTAGEM</a>
+								</div>
+							</li>
+							<li ng-class="{active: isActive('/compra/save')}" class="menu">
+								<div>
+									<a href="compra/save">NOVO</a>
+								</div>
+							</li>
+						</ul>
+					</li>
+					<li>
+						<div class="menu title">
+							CLIENTES
+						</div>
+						<ul id="clientes" class="sub-title">
+							<li ng-class="{active: isActive('/cliente')}" class="menu">
+								<div>
+									<a href="cliente">LISTAGEM</a>
+								</div>
+							</li>
+							<li ng-class="{active: isActive('/cliente/save')}" class="menu">
+								<div>
+									<a href="cliente/save">NOVO</a>
+								</div>
+							</li>
+						</ul>
+					</li>
+					<li>
+						<div class="menu title">
+							PRODUTOS
+						</div>
+						<ul id="produtos" class="sub-title">
+							<li ng-class="{active: isActive('/produto')}" class="menu">
+								<div>
+									<a href="produto">LISTAGEM</a>
+								</div>
+							</li>
+							<li ng-class="{active: isActive('/produto/save')}" class="menu">
+								<div>
+									<a href="produto/save">NOVO</a>
+								</div>
+							</li>
+						</ul>
+					</li>	
+				</ul>
+			</md-content>
+		</md-sidenav>
+
+		<md-content flex layout-padding>
+			<div>
+				<md-button ng-click="toggleLeft()" class="md-primary" hide-gt-md>
+					Toggle left
+				</md-button>
+			</div>
+		
+			<div ng-view></div>
+		</md-content>
+
+	</section>
+
+	<loading></loading>
+	<error-message></error-message>
+
+    <!-- jQuery -->
+    <script src="resources/js/libs/jquery-3.2.1.min.js"></script>
+    <script src="resources/js/libs/moment.js"></script>
+    <script src="resources/js/libs/cpf.js"></script>
+    <script src="resources/js/libs/cnpj.js"></script>
+    <script src="resources/js/libs/bootstrap.min.js"></script>
+
+	<!-- AngularJS -->
+    <script src="resources/js/libs/angularjs/1.6.4/angular.min.js"></script>
+    <script src="resources/js/libs/angularjs/1.6.4/angular-animate.min.js"></script>
+	<script src="resources/js/libs/angularjs/1.6.4/angular-aria.min.js"></script>
+	<script src="resources/js/libs/angularjs/1.6.4/angular-messages.min.js"></script>
+    <script src="resources/js/libs/angularjs/1.6.4/angular-route.min.js"></script>
+    <script src="resources/js/libs/angularjs/1.6.4/angular-resource.min.js"></script>
+    <script src="resources/js/libs/angularjs/1.6.4/angular-material.min.js"></script>
+    <script src="resources/js/libs/mask.js"></script>
+
+	<!-- APP mondule e configurações -->
+    <script src="resources/js/app/app.module.js"></script>
+    <script src="resources/js/app/factory/request-interceptor.factory.js"></script>
+    <script src="resources/js/app/app.config.js"></script>
+    <script src="resources/js/app/ng-cpf-cnpj/ngCpfCnpj.js"></script>
+
+	<!-- Plugins -->
+	<script src="resources/js/app/plugins/angular-datatables.min.js"></script>
+	<script src="resources/js/app/plugins/smart-table.min.js"></script>
+	<script src="resources/js/app/plugins/ng-table.min.js"></script>
+	<script src="resources/js/app/plugins/side-nave.controller.js"></script>
+	<script src="resources/js/app/plugins/select-search-controller.js"></script>
+
+	<!-- Clientes -->
+    <script src="resources/js/app/cliente/list/cliente-list.module.js"></script>
+    <script src="resources/js/app/cliente/list/cliente-list.component.js"></script>
+    <script src="resources/js/app/cliente/save/cliente-save.module.js"></script>
+    <script src="resources/js/app/cliente/save/cliente-save.component.js"></script>
+    <script src="resources/js/app/cliente/save/cliente-endereco.component.js"></script>
+    <script src="resources/js/app/cliente/save/cliente-telefone.component.js"></script>
+    
+    <!-- Compras -->
+    <script src="resources/js/app/compra/save/compra-save.module.js"></script>
+    <script src="resources/js/app/compra/save/compra-save.component.js"></script>
+    <script src="resources/js/app/compra/save/compra-produto.component.js"></script>
+    <script src="resources/js/app/compra/list/compra-list.module.js"></script>
+    <script src="resources/js/app/compra/list/compra-list.component.js"></script>
+    
+    <!-- Produtos -->
+    <script src="resources/js/app/produto/list/produto-list.module.js"></script>
+    <script src="resources/js/app/produto/list/produto-list.component.js"></script>
+    <script src="resources/js/app/produto/save/produto-save.module.js"></script>
+    <script src="resources/js/app/produto/save/produto-save.component.js"></script>
+    
+    <!-- Loading -->
+    <script src="resources/js/app/loading/loading.module.js"></script>
+    <script src="resources/js/app/loading/loading.component.js"></script>
+    
+    <!-- Erro Message -->
+    <script src="resources/js/app/error-message/error-message.module.js"></script>
+    <script src="resources/js/app/error-message/error-message.component.js"></script>
+
+    <!-- Botao voltar -->
+    <script src="resources/js/app/botao-historico/botao-historico.module.js"></script>
+    <script src="resources/js/app/botao-historico/botao-historico.component.js"></script>
+
+	<!-- Services -->
+    <script src="resources/js/app/core/core.module.js"></script>
+    <script src="resources/js/app/core/cliente/cliente.module.js"></script>
+    <script src="resources/js/app/core/cliente/cliente.service.js"></script>
+    <script src="resources/js/app/core/compra/compra.module.js"></script>
+    <script src="resources/js/app/core/compra/compra.service.js"></script>
+    <script src="resources/js/app/core/produto/produto.module.js"></script>
+    <script src="resources/js/app/core/produto/produto.service.js"></script>
+    <script src="resources/js/app/core/estado/estado.module.js"></script>
+    <script src="resources/js/app/core/estado/estado.service.js"></script>
+    <script src="resources/js/app/core/cidade/cidade.module.js"></script>
+    <script src="resources/js/app/core/cidade/cidade.service.js"></script>
+</body>
+
+</html>

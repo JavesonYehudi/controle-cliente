@@ -1,0 +1,36 @@
+<h1>Registro de Vendas</h1>
+
+<table st-table="compras" st-safe-src="$ctrl.compras" class="table table-striped">
+	<thead>
+	<tr>
+		<th st-sort="id">Id</th>
+		<th st-sort="nome">Nome</th>
+		<th st-sort="dataDeCriacao">Data da venda</th>
+		<th st-sort="valorDaEntrada">Entrada (R$)</th>
+		<th st-sort="parcela">Parcela (R$)</th>
+		<th st-sort="parcelas">Parcelas (Qtd)</th>
+		<th st-sort="itens">Produtos</th>
+	</tr>
+	<tr>
+		<th colspan="7"><input st-search="" class="form-control" placeholder="global search ..." type="text"/></th>
+	</tr>
+	</thead>
+	<tbody>
+	<tr ng-repeat="compra in compras">
+		<td style="text-transform: uppercase;">{{compra.id}}</td>
+		<td style="text-transform: uppercase;">{{compra.cliente.nome}}</td>
+		<td style="text-transform: uppercase;">{{compra.dataDeCriacao | date: 'dd/MM/yyyy'}}</td>
+		<td style="text-transform: uppercase;">{{compra.valorDaEntrada | currency: "R$" : 2}}</td>
+		<td style="text-transform: uppercase;">{{compra.parcelas[0].valorVencimento | currency: "R$" : 2}}</td>
+		<td style="text-transform: uppercase;">{{compra.parcelas.length}}</td>
+		<td style="text-transform: uppercase;">{{compra.itens.length}}</td>
+	</tr>
+	</tbody>
+	<tfoot>
+		<tr>
+			<td colspan="7" class="text-center">
+				<div st-pagination="" st-items-by-page="$ctrl.itemsByPage" st-displayed-pages="7"></div>
+			</td>
+		</tr>
+	</tfoot>
+</table>

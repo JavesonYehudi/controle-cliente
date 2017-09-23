@@ -1,0 +1,36 @@
+<h1>Registro de Clientes</h1>
+
+<table st-table="clientes" st-safe-src="$ctrl.clientes" class="table table-striped">
+	<thead>
+	<tr>
+		<th st-sort="cpf">CPF</th>
+		<th st-sort="nome">Nome</th>
+		<th st-sort="nomeMae">Nome da mãe</th>
+		<th st-sort="nascimento">Data de nascimento</th>
+		<th st-sort="esatdoCivil">Estado civil</th>
+		<th st-sort="sexo">Sexo</th>
+		<th>Ações</th>
+	</tr>
+	<tr>
+		<th colspan="7"><input st-search="" class="form-control" placeholder="global search ..." type="text"/></th>
+	</tr>
+	</thead>
+	<tbody>
+	<tr ng-repeat="cliente in clientes">
+		<td style="text-transform: uppercase;">{{cliente.documentos[0].numero}}</td>
+		<td style="text-transform: uppercase;">{{cliente.nome}}</td>
+		<td style="text-transform: uppercase;">{{cliente.nomeMae}}</td>
+		<td style="text-transform: uppercase;">{{cliente.nascimento | date: 'dd/MM/yyyy'}}</td>
+		<td style="text-transform: uppercase;">{{cliente.estadoCivil}}</td>
+		<td style="text-transform: uppercase;">{{cliente.sexo}}</td>
+		<td style="text-transform: uppercase;"><a href="cliente/{{cliente.id}}">Editar</a></td>
+	</tr>
+	</tbody>
+	<tfoot>
+		<tr>
+			<td colspan="7" class="text-center">
+				<div st-pagination="" st-items-by-page="$ctrl.itemsByPage" st-displayed-pages="7"></div>
+			</td>
+		</tr>
+	</tfoot>
+</table>

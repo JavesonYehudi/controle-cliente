@@ -1,0 +1,69 @@
+<h1>Cadastro de Venda</h1>
+
+<form name="form" novalidate class="md-padding" ng-cloak layout="column">
+	<md-card>
+		<md-card-content >
+			<div layout-gt-sm="row" ng-controller="SelectHeaderController">
+				<md-input-container class="md-block" flex-gt-sm>
+					<label>Cliente</label>
+					<md-select ng-model="$ctrl.compra.cliente.id" aria-label="Clientes" required md-on-close="clearSearchTerm()" data-md-container-class="selectHeader">
+						<md-select-header class="select-header">
+							<input ng-model="searchTerm" type="search" placeholder="Procure por clientes..." class="header-searchbox md-text">
+						</md-select-header>
+						<md-option> <em>Nenhum</em> </md-option>
+						<md-option ng-repeat="cliente in $ctrl.clientes | filter:searchTerm" value="{{cliente.id}}"> {{cliente.nome}} </md-option>
+					</md-select>
+				</md-input-container>
+			</div>
+		</md-card-content>
+	</md-card>
+	
+	<md-card>
+		<md-card-content>
+			<md-card-title-text>
+				<span class="md-headline">Produtos</span>
+			</md-card-title-text>
+			<div ng-repeat="quantidade in $ctrl.quantidadeDeProdutos track by $index" layout-gt-sm="row" >
+				<compra-produto compra="$ctrl.compra" index="$index" style="width: 90%;"></compra-produto>
+				<md-icon ng-show="$ctrl.quantidadeDeProdutos.length > 1" ng-click="$ctrl.removeProduto($index)" md-svg-src="resources/assets/material-design-icons/content/svg/production/ic_remove_circle_outline_black_24px.svg" aria-label="Remove circle" style="cursor: pointer;"></md-icon>
+			</div>
+		</md-card-content>
+		<md-button class="md-raised md-primary" ng-click="$ctrl.adicionaProduto($ctrl.quantidadeDeProdutos.length)">Adicionar Produto</md-button>
+	</md-card>
+
+	<md-card>
+		<md-card-content>
+			<md-card-title-text>
+				<span class="md-headline">Parcelas</span>
+			</md-card-title-text>
+			<div layout-gt-sm="row" >
+				<md-input-container class="md-block" flex-gt-sm>
+					<label>Quantidade de parcelas</label>
+					<input type="number" min="0" ng-model="$ctrl.compra.quantidadeDeParcelas" ng-change="$ctrl.onQuantidadeDeParcelaChange()" required>
+				</md-input-container>
+
+				<md-input-container class="md-block" flex-gt-sm>
+					<label>Valor da entrada</label>
+					<input type="number" step="0.01" min="0" ng-model="$ctrl.compra.valorDaEntrada" ng-change="$ctrl.onQuantidadeDeParcelaChange()" required>
+				</md-input-container>
+
+				<md-input-container class="md-block" flex-gt-sm>
+					<label>Vencimento</label>
+					<md-datepicker aria-label="Vencimento" ng-model="$ctrl.compra.dataPrimeiraParcela" md-open-on-focus required="" ng-required="true" md-min-date="$ctrl.minDate"></md-datepicker>
+				</md-input-container>
+
+				<md-input-container class="md-block" flex-gt-sm>
+					<label>Valor das Parcelas</label>
+					<input type="number" ng-disabled="true" ng-model="$ctrl.compra.valorDaParcela">
+				</md-input-container>
+			</div>
+		</md-card-content>
+	</md-card>
+
+	<div>
+		<div>
+			<md-button class="md-raised md-primary" ng-disabled="form.$invalid" ng-click="$ctrl.create($ctrl.compra)">Salvar</md-button>
+			<botao-historico></botao-historico>
+		</div>
+	</div>
+</form>

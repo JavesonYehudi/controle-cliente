@@ -1,0 +1,27 @@
+<h1>Cadastro de Produto</h1>
+
+<form name="form" novalidate class="md-padding" ng-cloak layout="column">
+	<md-card>
+		<md-card-content >
+			<div layout-gt-sm="row">
+          		<md-input-container class="md-block" flex-gt-sm>
+					<label>Nome do produto</label>
+					<input id="nome" type="text" ng-model="$ctrl.produto.nome" name="nomeProduto" required>
+				</md-input-container>
+				
+				<md-input-container class="md-block" flex-gt-sm>
+					<label>Valor do produto (R$)</label>
+					<input id="nome-mãe" type="number" ng-model="$ctrl.produto.valor" name="valorProduto" step="0.01" required>
+				</md-input-container>
+			</div>
+
+		</md-card-content>
+	</md-card>
+
+	<div>
+		<div>
+			<md-button class="md-raised md-primary" ng-click="$ctrl.create($ctrl.produto)" ng-disabled="form.$invalid" type="submit">Salvar</md-button>
+			<botao-historico></botao-historico>
+		</div>
+	</div>
+</form>

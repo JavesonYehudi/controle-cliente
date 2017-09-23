@@ -1,0 +1,95 @@
+<h1>Cadastro de Clientes</h1>
+<form name="form" novalidate class="md-padding" ng-cloak layout="column">
+	<md-card>
+		<md-card-title>
+			<md-card-title-text>
+				<span class="md-headline">Dados Pessoais</span>
+			</md-card-title-text>
+		</md-card-title>
+		<md-card-content >
+			<div layout-gt-sm="row">
+          		<md-input-container class="md-block" flex-gt-sm>
+					<label>Nome do cliente</label>
+					<input id="nome" type="text" ng-model="$ctrl.cliente.nome" name="clienteName" required>
+				</md-input-container>
+			</div>
+			
+			<div layout-gt-sm="row">
+				<md-input-container class="md-block" flex-gt-sm>
+					<label>Nome da mãe</label>
+					<input id="nome-mãe" type="text" ng-model="$ctrl.cliente.nomeMae" name="nomeMae" required>
+				</md-input-container>
+			</div>
+			
+			<div layout-gt-xs="row">
+				<input type="hidden" ng-model="$ctrl.cliente.documentos[0].tipo" value="cpf">
+				<md-input-container>
+					<label>CPF</label>
+					<input aria-label="CPF" id="cpf-cnpj" type="text" ng-model="$ctrl.cliente.documentos[0].numero" ng-cpf ui-mask="999.999.999-99" placeholder="" required>
+				</md-input-container>
+				
+				<input type="hidden" ng-model="$ctrl.cliente.documentos[1].tipo" value="rg">
+				<md-input-container>
+					<label>RG</label>
+					<input aria-label="RG" id="rg" type="text" ng-model="$ctrl.cliente.documentos[1].numero" required>
+				</md-input-container>
+
+				<md-input-container>
+					<label>Estado Civil</label>
+					<md-select ng-model="$ctrl.cliente.estadoCivil" aria-label="Estado Civil">
+						<md-option> <em>Nenhum</em> </md-option>
+						<md-option value="solteiro"> Solteiro(a) </md-option>
+						<md-option value="casado"> Casado(a) </md-option>
+						<md-option value="divorciado"> Divorciado(a) </md-option>
+					</md-select>
+				</md-input-container>
+
+				<md-input-container>
+					<label>Sexo</label>
+					<md-select ng-model="$ctrl.cliente.sexo" aria-label="Sexo">
+						<md-option> <em>Nenhum</em> </md-option>
+						<md-option value="homem">Homem</md-option>
+						<md-option value="mulher">Mulher</md-option>
+						<md-option value="indefinido">Não listado</md-option>
+					</md-select>
+				</md-input-container>
+
+				<md-input-container class="md-block" flex-gt-sm>
+					<label>Nascimento</label>
+					<md-datepicker aria-label="Nascimento" ng-model="$ctrl.cliente.nascimento" md-open-on-focus></md-datepicker>
+				</md-input-container>
+			</div>
+		</md-card-content>
+	</md-card>
+	
+	<md-card>
+		<md-card-title>
+			<md-card-title-text>
+				<span class="md-headline">Endereço</span>
+			</md-card-title-text>
+		</md-card-title>
+
+		<md-card-content>
+			<cliente-endereco cliente="$ctrl.cliente" cidades="$ctrl.cidades"></cliente-endereco>
+		</md-card-content>
+
+	</md-card>
+
+	<md-card>
+		<md-card-title>
+			<md-card-title-text>
+				<span class="md-headline">Telefone</span>
+			</md-card-title-text>
+		</md-card-title>
+
+		<cliente-telefone cliente="$ctrl.cliente"></cliente-telefone>
+		
+	</md-card>
+
+	<div>
+		<div>
+			<md-button class="md-raised md-primary" ng-click="$ctrl.create($ctrl.cliente)" ng-disabled="form.$invalid">Salvar</md-button>
+			<botao-historico></botao-historico>
+		</div>
+	</div>
+</form>

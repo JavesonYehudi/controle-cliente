@@ -1,0 +1,22 @@
+<div layout-gt-sm="row" ng-controller="SelectHeaderController">
+	<md-input-container class="md-block" flex-gt-sm>
+		<label>Produto</label>
+		<md-select ng-model="$ctrl.compra.itens[$ctrl.index].produto" aria-label="Produto" required ng-change="$ctrl.onProdutoSelect($ctrl.compra.itens[$ctrl.index].produto, $ctrl.index)" md-on-close="clearSearchTerm()" data-md-container-class="selectHeader">
+			<md-select-header class="select-header">
+				<input ng-model="searchTerm" type="search" placeholder="Procure por produtos..." class="header-searchbox md-text">
+			</md-select-header>
+			<md-option value=""> <em>Nenhum</em> </md-option>
+			<md-option ng-repeat="produto in $ctrl.produtos | filter:searchTerm" ng-value="{{produto}}"> 
+				{{produto.nome}}
+			</md-option>
+		</md-select>
+	</md-input-container>
+	<md-input-container class="md-block" flex-gt-sm>
+		<label>Quantidade</label>
+		<input type="number" min="0" ng-model="$ctrl.compra.itens[$ctrl.index].quantidade" ng-change="$ctrl.onProdutoChange()">
+	</md-input-container>
+	<md-input-container class="md-block" flex-gt-sm>
+		<label>Valor Unitário</label>
+		<input type="number" step="0.01" min="0" ng-model="$ctrl.compra.itens[$ctrl.index].valorUnitario" ng-change="$ctrl.onProdutoChange()">
+	</md-input-container>
+</div>

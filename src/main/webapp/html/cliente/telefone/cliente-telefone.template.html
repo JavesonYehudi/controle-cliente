@@ -1,0 +1,18 @@
+<md-card-content>
+	<div layout-gt-xs="row">
+		<md-input-container>
+			<label>Tipo</label>
+			<md-select ng-model="$ctrl.cliente.telefones[0].tipo" aria-label="Tipo de telefone">
+				<md-option value="residencial"> Residencial </md-option>
+				<md-option value="trabalho"> Trabalho </md-option>
+				<md-option value="celular"> Celular </md-option>
+			</md-select>
+		</md-input-container>
+
+		<md-input-container>
+			<label>Numero</label>
+			<input aria-label="Numero de telefone" id="numero-telefone" type="text" ng-model="$ctrl.cliente.telefones[0].numero" >
+		</md-input-container>
+
+	</div>
+</md-card-content>

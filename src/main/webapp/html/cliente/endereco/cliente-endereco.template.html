@@ -1,0 +1,54 @@
+<div ng-controller="SelectHeaderController">
+	<div layout-gt-xs="row">
+		<md-input-container>
+			<label>Tipo de endereço</label>
+			<md-select ng-model="$ctrl.cliente.enderecos[0].tipo" aria-label="Tipo de endereço" required>
+				<md-option> <em>Nenhum</em> </md-option>
+				<md-option value="residencial"> Residencial </md-option>
+				<md-option value="comercial"> Comercial </md-option>
+			</md-select>
+		</md-input-container>
+		<md-input-container>
+			<label>Estado</label>
+			<md-select ng-model="$ctrl.cliente.enderecos[0].estado.id" aria-label="Estado" ng-change="$ctrl.onSelectEstado($ctrl.cliente.enderecos[0].estado.id)" required md-on-close="clearSearchTerm()" data-md-container-class="selectHeader">
+				<md-select-header class="select-header">
+					<input ng-model="searchTerm" type="search" placeholder="Procure por estados..." class="header-searchbox md-text">
+				</md-select-header>
+				<md-option value=""> <em>Nenhum</em> </md-option>
+				<md-option ng-repeat="estado in $ctrl.estados | filter:searchTerm" ng-value="{{estado.id}}"> {{estado.sigla}} - {{estado.nome}} </md-option>
+			</md-select>
+		</md-input-container>
+	
+		<md-input-container>
+			<label>Cidade</label>
+			<md-select ng-model="$ctrl.cliente.enderecos[0].cidade.id" aria-label="Cidade" required md-on-close="clearSearchTerm()" data-md-container-class="selectHeader" ng-disabled="!$ctrl.cliente.enderecos[0].estado.id && !$ctrl.cliente.enderecos[0].cidade.id">
+				<md-select-header class="select-header">
+					<input ng-model="searchTerm" type="search" placeholder="Procure por cidade..." class="header-searchbox md-text">
+				</md-select-header>
+				<md-option> <em>Nenhum</em> </md-option>
+				<md-option ng-repeat="cidade in $ctrl.cidades | filter:searchTerm" ng-value="{{cidade.id}}"> {{cidade.nome}} </md-option>
+			</md-select>
+		</md-input-container>
+	</div>
+	<div layout-gt-xs="row">
+		<md-input-container>
+			<label>CEP</label>
+			<input aria-label="CEP" id="cep" type="text" ng-model="$ctrl.cliente.enderecos[0].cep" ui-mask="99999-999" placeholder="">
+		</md-input-container>
+	
+		<md-input-container>
+			<label>Bairro</label>
+			<input aria-label="Bairro" id="bairro" type="text" ng-model="$ctrl.cliente.enderecos[0].bairro" required>
+		</md-input-container>
+	
+		<md-input-container>
+			<label>Logradouro</label>
+			<input aria-label="Logradouro" id="logradouro" type="text" ng-model="$ctrl.cliente.enderecos[0].logradouro" required>
+		</md-input-container>
+	
+		<md-input-container>
+			<label>Complemento</label>
+			<input aria-label="Complemento" id="complemento" type="text" ng-model="$ctrl.cliente.enderecos[0].complemento">
+		</md-input-container>
+	</div>
+</div>
