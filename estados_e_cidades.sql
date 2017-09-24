@@ -1,4 +1,5 @@
 
+
 --  Os dados contidos nesse arquivo foram extraídos do site: http://ibge.gov.br/cidadesat utilizando ruby, nokogiri e expressões regulares.
 --  Autor: Mauricio Natanael Ferreira
 --  Github: https://github.com/manfe
