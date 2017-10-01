@@ -22,7 +22,11 @@
 		<td style="text-transform: uppercase;">{{compra.dataDeCriacao | date: 'dd/MM/yyyy'}}</td>
 		<td style="text-transform: uppercase;">{{compra.valorDaEntrada | currency: "R$" : 2}}</td>
 		<td style="text-transform: uppercase;">{{compra.parcelas[0].valorVencimento | currency: "R$" : 2}}</td>
-		<td style="text-transform: uppercase;">{{compra.parcelas.length}}</td>
+		<td style="text-transform: uppercase;">
+			<md-button class="md-primary md-raised" ng-click="showPrompt($event)"  >
+				{{compra.parcelas.length}}
+			</md-button>
+		</td>
 		<td style="text-transform: uppercase;">{{compra.itens.length}}</td>
 	</tr>
 	</tbody>
@@ -34,3 +38,4 @@
 		</tr>
 	</tfoot>
 </table>
+

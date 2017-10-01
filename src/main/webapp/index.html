@@ -17,6 +17,8 @@
     
     <!-- Angular Material style sheet -->
 	<link rel="stylesheet" href="resources/css/angular-material.min.css">
+	<link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet">
 
 	<!-- bootstrap style sheet -->
 	<link rel="stylesheet" href="resources/css/bootstrap.min.css">
@@ -91,7 +93,7 @@
 		<md-content flex layout-padding>
 			<div>
 				<md-button ng-click="toggleLeft()" class="md-primary" hide-gt-md>
-					Toggle left
+					<i class="material-icons">menu</i>
 				</md-button>
 			</div>
 		
@@ -165,6 +167,10 @@
     <!-- Botao voltar -->
     <script src="resources/js/app/botao-historico/botao-historico.module.js"></script>
     <script src="resources/js/app/botao-historico/botao-historico.component.js"></script>
+
+	<!-- Modal -->
+    <script src="resources/js/app/parcelas/parcela-modal.module.js"></script>
+    <script src="resources/js/app/parcelas/parcela-modal.component.js"></script>
 
 	<!-- Services -->
     <script src="resources/js/app/core/core.module.js"></script>
