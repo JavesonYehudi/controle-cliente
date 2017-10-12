@@ -1,0 +1,28 @@
+<h1>Listagem de Funcionarios</h1>
+
+<table st-table="funcionarios" st-safe-src="$ctrl.funcionarios" class="table table-striped">
+	<thead>
+	<tr>
+		<th st-sort="id">Id</th>
+		<th st-sort="nome">Nome</th>
+		<th>Ações</th>
+	</tr>
+	<tr>
+		<th colspan="7"><input st-search="" class="form-control" placeholder="global search ..." type="text"/></th>
+	</tr>
+	</thead>
+	<tbody>
+	<tr ng-repeat="funcionario in funcionarios">
+		<td style="text-transform: uppercase;">{{funcionario.id}}</td>
+		<td style="text-transform: uppercase;">{{funcionario.nome}}</td>
+		<td style="text-transform: uppercase;"><a href="funcionario/{{funcionario.id}}">Editar</a></td>
+	</tr>
+	</tbody>
+	<tfoot>
+		<tr>
+			<td colspan="7" class="text-center">
+				<div st-pagination="" st-items-by-page="$ctrl.itemsByPage" st-displayed-pages="7"></div>
+			</td>
+		</tr>
+	</tfoot>
+</table>

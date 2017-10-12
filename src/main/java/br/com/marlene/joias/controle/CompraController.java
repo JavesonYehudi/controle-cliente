@@ -21,7 +21,7 @@ public class CompraController extends GenericController<Compra> {
 	@Get("")
 	@Override
 	public void listarTodos() {
-		result.use(Results.json()).withoutRoot().from(dao.lista()).include("cliente", "parcelas", "itens").serialize();
+		result.use(Results.json()).withoutRoot().from(dao.lista()).include("cliente", "parcelas", "itens", "funcionario").serialize();
 	}
 
 	@Post("")
@@ -31,7 +31,8 @@ public class CompraController extends GenericController<Compra> {
 		try {
 			System.out.println(compra);
 			criarParcelas(compra);
-			result.use(Results.json()).withoutRoot().from(dao.salva(compra)).serialize();
+			dao.salva(compra);
+			result.use(Results.json()).withoutRoot().from(compra).serialize();
 		} catch (Exception e) {
 			e.printStackTrace();
 			result.use(Results.http()).body(e.toString()).setStatusCode(400); //.badRequest(e.toString());

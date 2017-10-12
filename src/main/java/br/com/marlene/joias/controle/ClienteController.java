@@ -27,8 +27,8 @@ public class ClienteController extends GenericController<Cliente>{
 	@Override
 	public void salvar(Cliente cliente) {
 		try {
-			System.out.println(cliente);
-			result.use(Results.json()).withoutRoot().from(dao.salva(cliente)).serialize();
+			dao.salva(cliente);
+			result.use(Results.json()).withoutRoot().from(cliente).serialize();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

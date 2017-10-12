@@ -12,36 +12,37 @@ app.config([ '$locationProvider', '$routeProvider',
 		function config($locationProvider, $routeProvider) {
 			$routeProvider.when('/cliente', {
 				template : '<cliente-list></cliente-list>',
-				controller : widgetsController,
-				activetab : 'cliente'
+				controller : widgetsController
 			}).when('/cliente/save', {
 				template : '<cliente-save></cliente-save>',
-				controller : widgetsController,
-				activetab : 'clienteSave'
+				controller : widgetsController
 			}).when('/cliente/:clienteId', {
 				template : '<cliente-save></cliente-save>',
-				controller : widgetsController,
-				activetab : 'clienteDetail'
+				controller : widgetsController
 			}).when('/produto', {
 				template : '<produto-list></produto-list>',
-				controller : widgetsController,
-				activetab : 'produto'
+				controller : widgetsController
 			}).when('/produto/save', {
 				template : '<produto-save></produto-save>',
-				controller : widgetsController,
-				activetab : 'produtoSave'
+				controller : widgetsController
 			}).when('/produto/:produtoId', {
 				template : '<produto-save></produto-save>',
-				controller : widgetsController,
-				activetab : 'produtoDetail'
+				controller : widgetsController
 			}).when('/compra/save', {
 				template : '<compra-save></compra-save>',
-				controller : widgetsController,
-				activetab : 'compraSave'
+				controller : widgetsController
 			}).when('/compra', {
 				template : '<compra-list></compra-list>',
-				controller : widgetsController,
-				activetab : 'compraList'
+				controller : widgetsController
+			}).when('/funcionario', {
+				template : '<funcionario-list></funcionario-list>',
+				controller : widgetsController
+			}).when('/funcionario/save', {
+				template : '<funcionario-save></funcionario-save>',
+				controller : widgetsController
+			}).when('/funcionario/:funcionarioId', {
+				template : '<funcionario-save></funcionario-save>',
+				controller : widgetsController
 			}).otherwise('/cliente');
 			// configure html5 to get links working on jsfiddle
 			$locationProvider.html5Mode(true);

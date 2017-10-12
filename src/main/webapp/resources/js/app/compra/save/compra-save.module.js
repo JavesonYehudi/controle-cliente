@@ -1,1 +1,1 @@
-angular.module('compraSave', [ 'core.cliente', 'core.produto', 'core.compra' ]);
+angular.module('compraSave', [ 'core.cliente', 'core.produto', 'core.compra', 'core.funcionario' ]);

@@ -34,7 +34,7 @@ CREATE SEQUENCE marlene_joias.cidades_id_seq
 
 
 
-ALTER SEQUENCE marlene_joias.cidades_id_seq OWNED BY cidades.id;
+ALTER SEQUENCE marlene_joias.cidades_id_seq OWNED BY marlene_joias.cidades.id;
 
 SELECT pg_catalog.setval('cidades_id_seq', 5565, true);
 
@@ -51,13 +51,13 @@ CREATE SEQUENCE marlene_joias.estados_id_seq
     NO MAXVALUE
     CACHE 1;
 
-ALTER SEQUENCE marlene_joias.estados_id_seq OWNED BY estados.id;
+ALTER SEQUENCE marlene_joias.estados_id_seq OWNED BY marlene_joias.estados.id;
 
 SELECT pg_catalog.setval('estados_id_seq', 27, true);
 
-ALTER TABLE ONLY marlene_joias..cidades ALTER COLUMN id SET DEFAULT nextval('cidades_id_seq'::regclass);
+ALTER TABLE ONLY marlene_joias.cidades ALTER COLUMN id SET DEFAULT nextval('marlene_joias.cidades_id_seq'::regclass);
 
-ALTER TABLE ONLY marlene_joias..estados ALTER COLUMN id SET DEFAULT nextval('estados_id_seq'::regclass);
+ALTER TABLE ONLY marlene_joias.estados ALTER COLUMN id SET DEFAULT nextval('marlene_joias.estados_id_seq'::regclass);
 
 
 INSERT INTO marlene_joias.cidades VALUES (3, 'Brasiléia', 120010, 1, 21398, 5.46, 'brasileense', 3916.507);

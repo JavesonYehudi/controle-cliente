@@ -1,6 +1,6 @@
-<h1>Registro de Vendas</h1>
+ <h1>Registro de Vendas</h1>
 
-<table st-table="compras" st-safe-src="$ctrl.compras" class="table table-striped">
+<table st-table="compras" st-safe-src="$ctrl.compras" class="table table-striped" >
 	<thead>
 	<tr>
 		<th st-sort="id">Id</th>
@@ -10,27 +10,49 @@
 		<th st-sort="parcela">Parcela (R$)</th>
 		<th st-sort="parcelas">Parcelas (Qtd)</th>
 		<th st-sort="itens">Produtos</th>
+		<th st-sort="nome">Vendedor</th>
 	</tr>
 	<tr>
-		<th colspan="7"><input st-search="" class="form-control" placeholder="global search ..." type="text"/></th>
+		<th></th>
+		<th >
+			<input st-search="cliente.nome" class="form-control input-sm form-control" placeholder="Pesquisa por cliente" type="search"/>
+		</th>
+		<th >
+			<input st-search="dataDeCriacao" class="form-control input-sm form-control" placeholder="Pesquisa por data" type="date"/>
+		</th>
+		<th colspan="4"></th>
+		<th>
+			<input st-search="funcionario.nome" placeholder="Pesquisa por vendedor" class="input-sm form-control" type="search"/>
+		</th>
 	</tr>
 	</thead>
 	<tbody>
-	<tr ng-repeat="compra in compras">
+	<tr ng-repeat="compra in compras | filterAndSum:this">
 		<td style="text-transform: uppercase;">{{compra.id}}</td>
-		<td style="text-transform: uppercase;">{{compra.cliente.nome}}</td>
+		<td style="text-transform: uppercase;">
+			<span ng-if="!compra.cliente.nome">Cliente não cadastrado</span>
+			{{compra.cliente.nome}}
+		</td>
 		<td style="text-transform: uppercase;">{{compra.dataDeCriacao | date: 'dd/MM/yyyy'}}</td>
 		<td style="text-transform: uppercase;">{{compra.valorDaEntrada | currency: "R$" : 2}}</td>
 		<td style="text-transform: uppercase;">{{compra.parcelas[0].valorVencimento | currency: "R$" : 2}}</td>
 		<td style="text-transform: uppercase;">{{compra.parcelas.length}}</td>
 		<td style="text-transform: uppercase;">{{compra.itens.length}}</td>
+		<td style="text-transform: uppercase;">{{compra.funcionario.nome}}</td>
 	</tr>
 	</tbody>
 	<tfoot>
 		<tr>
-			<td colspan="7" class="text-center">
+			<td colspan="3"><strong>Total</strong></td>
+			<td><strong>{{$ctrl.totalValorDaEntrada | currency: "R$" : 2}}</strong></td>
+			<td><strong>{{$ctrl.totalValorParcelas | currency: "R$" : 2}}</strong></td>
+			<td colspan="3"></td>
+		</tr>
+		<tr>
+			<td colspan="8" class="text-center">
 				<div st-pagination="" st-items-by-page="$ctrl.itemsByPage" st-displayed-pages="7"></div>
 			</td>
 		</tr>
 	</tfoot>
+
 </table>

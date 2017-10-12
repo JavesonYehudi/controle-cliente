@@ -22,6 +22,7 @@ import javax.persistence.Table;
 import javax.persistence.Transient;
 
 import br.com.marlene.joias.modelo.Cliente;
+import br.com.marlene.joias.modelo.Funcionario;
 
 @Entity
 @Table(name = "compras")
@@ -39,6 +40,7 @@ public class Compra implements Serializable {
 	private Date dataPrimeiraParcela;
 	private Cliente cliente;
 	private Date dataDeCriacao;
+	private Funcionario funcionario;
 
 	public Compra() {
 		itens = new ArrayList<>();
@@ -132,8 +134,18 @@ public class Compra implements Serializable {
 		this.dataDeCriacao = dataDeCriacao;
 	}
 
+	@ManyToOne
+	@JoinColumn(name = "funcionario_id")
+	public Funcionario getFuncionario() {
+		return funcionario;
+	}
+
+	public void setFuncionario(Funcionario funcionario) {
+		this.funcionario = funcionario;
+	}
+
 	@Transient
-	public boolean isaVista() {
+	public boolean isAvista() {
 		return this.getParcelas().size() == 1;
 	}
 

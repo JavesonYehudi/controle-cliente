@@ -37,6 +37,16 @@
      <from>*/produto/**</from>
      <to>/index.html</to>
    </rule>
+
+    <rule match-type="wildcard">
+        <from>*/funcionario</from>
+        <to>index.html</to>
+    </rule>
+
+    <rule match-type="wildcard">
+        <from>*/funcionario/**</from>
+        <to>/index.html</to>
+    </rule>
     <!--
     <rule>
         <note>

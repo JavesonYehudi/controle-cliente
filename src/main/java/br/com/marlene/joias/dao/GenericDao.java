@@ -25,8 +25,8 @@ public class GenericDao<T> {
 		return this.getManager().find(entity, id);
 	}
 
-	public T salva(T t) {
-		return this.getManager().merge(t);
+	public void salva(T t) {
+		this.getManager().persist(t);
 	}
 	
 	public List<T> lista(){

@@ -1,0 +1,26 @@
+<h1>Cadastro de Funcionario</h1>
+
+<form name="form" novalidate class="md-padding" ng-cloak layout="column">
+	<md-card>
+		<md-card-title>
+			<md-card-title-text>
+				<span class="md-headline">Dados Pessoais</span>
+			</md-card-title-text>
+		</md-card-title>
+		<md-card-content >
+			<div layout-gt-sm="row">
+          		<md-input-container class="md-block" flex-gt-sm>
+					<label>Nome do funcionario</label>
+					<input id="nome" type="text" ng-model="$ctrl.funcionario.nome" name="funcionarioName" required>
+				</md-input-container>
+			</div>
+		</md-card-content>
+	</md-card>
+
+	<div>
+		<div>
+			<md-button class="md-raised md-primary" ng-click="$ctrl.create($ctrl.funcionario)" ng-disabled="form.$invalid">Salvar</md-button>
+			<botao-historico></botao-historico>
+		</div>
+	</div>
+</form>

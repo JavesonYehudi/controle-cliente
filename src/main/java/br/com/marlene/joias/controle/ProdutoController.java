@@ -28,7 +28,8 @@ public class ProdutoController extends GenericController<Produto> {
 	public void salvar(Produto produto) {
 		try {
 			System.out.println(produto);
-			result.use(Results.json()).withoutRoot().from(dao.salva(produto)).serialize();
+			dao.salva(produto);
+			result.use(Results.json()).withoutRoot().from(produto).serialize();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

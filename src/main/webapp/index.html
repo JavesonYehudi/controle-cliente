@@ -27,7 +27,7 @@
 <body>
 
 	<section layout="row" flex layout-fill ng-controller="SideNaveController">
-		<md-sidenav class="md-sidenav-left" md-component-id="left" md-is-locked-open="$mdMedia('gt-md')" md-whiteframe="4">
+		<md-sidenav class="md-sidenav-left" md-component-id="left" md-is-locked-open="$mdMedia('gt-sm')" md-whiteframe="2">
 			<md-toolbar class="md-theme-indigo">
 				<h1 class="md-toolbar-tools">MARLENE JOIAS</h1>
 			</md-toolbar>
@@ -83,6 +83,23 @@
 								</div>
 							</li>
 						</ul>
+					</li>
+					<li>
+						<div class="menu title">
+							FUNCIONÁRIOS
+						</div>
+						<ul id="funcionario" class="sub-title">
+							<li ng-class="{active: isActive('/funcionario')}" class="menu">
+								<div>
+									<a href="funcionario">LISTAGEM</a>
+								</div>
+							</li>
+							<li ng-class="{active: isActive('/funcionario/save')}" class="menu">
+								<div>
+									<a href="funcionario/save">NOVO</a>
+								</div>
+							</li>
+						</ul>
 					</li>	
 				</ul>
 			</md-content>
@@ -90,8 +107,8 @@
 
 		<md-content flex layout-padding>
 			<div>
-				<md-button ng-click="toggleLeft()" class="md-primary" hide-gt-md>
-					Toggle left
+				<md-button ng-click="toggleLeft()" class="md-primary" hide-gt-sm>
+					Abrir Menu
 				</md-button>
 			</div>
 		
@@ -148,6 +165,12 @@
     <script src="resources/js/app/compra/list/compra-list.module.js"></script>
     <script src="resources/js/app/compra/list/compra-list.component.js"></script>
     
+	<!-- Funcionarios -->
+    <script src="resources/js/app/funcionario/list/funcionario-list.module.js"></script>
+    <script src="resources/js/app/funcionario/list/funcionario-list.component.js"></script>
+    <script src="resources/js/app/funcionario/save/funcionario-save.module.js"></script>
+    <script src="resources/js/app/funcionario/save/funcionario-save.component.js"></script>
+
     <!-- Produtos -->
     <script src="resources/js/app/produto/list/produto-list.module.js"></script>
     <script src="resources/js/app/produto/list/produto-list.component.js"></script>
@@ -178,6 +201,8 @@
     <script src="resources/js/app/core/estado/estado.service.js"></script>
     <script src="resources/js/app/core/cidade/cidade.module.js"></script>
     <script src="resources/js/app/core/cidade/cidade.service.js"></script>
+    <script src="resources/js/app/core/funcionario/funcionario.module.js"></script>
+    <script src="resources/js/app/core/funcionario/funcionario.service.js"></script>
 </body>
 
 </html>

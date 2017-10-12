@@ -1,6 +1,7 @@
-function CompraSaveController(Cliente, Compra, $scope, $location) {
+function CompraSaveController(Cliente, Compra, Funcionario, $scope, $location) {
 	var ctrl = this;
 	ctrl.quantidadeDeProdutos = [];
+	ctrl.aVista = false;
 	ctrl.quantidadeDeProdutos.push(0);
 	
 	ctrl.compra = {
@@ -14,6 +15,10 @@ function CompraSaveController(Cliente, Compra, $scope, $location) {
 
 	Cliente.query(function(retorno) {
 		ctrl.clientes = retorno;
+	});
+
+	Funcionario.query(function(retorno) {
+		ctrl.funcionarios = retorno;
 	});
 
 	ctrl.adicionaProduto = function(last) {
