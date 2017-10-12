@@ -5,10 +5,10 @@
 	<tr>
 		<th st-sort="cpf">CPF</th>
 		<th st-sort="nome">Nome</th>
-		<th st-sort="nomeMae">Nome da mãe</th>
 		<th st-sort="nascimento">Data de nascimento</th>
 		<th st-sort="esatdoCivil">Estado civil</th>
 		<th st-sort="sexo">Sexo</th>
+		<th st-sort="bairro">Bairro</th>
 		<th>Ações</th>
 	</tr>
 	<tr>
@@ -19,11 +19,11 @@
 	<tr ng-repeat="cliente in clientes">
 		<td style="text-transform: uppercase;">{{cliente.documentos[0].numero}}</td>
 		<td style="text-transform: uppercase;">{{cliente.nome}}</td>
-		<td style="text-transform: uppercase;">{{cliente.nomeMae}}</td>
 		<td style="text-transform: uppercase;">{{cliente.nascimento | date: 'dd/MM/yyyy'}}</td>
 		<td style="text-transform: uppercase;">{{cliente.estadoCivil}}</td>
 		<td style="text-transform: uppercase;">{{cliente.sexo}}</td>
-		<td style="text-transform: uppercase;"><a href="cliente/{{cliente.id}}">Editar</a></td>
+		<td style="text-transform: uppercase;">{{cliente.enderecos[0].bairro}}</td>
+		<td style="text-transform: uppercase;"><a href="cliente/{{cliente.id}}"><i class="material-icons"alt="Editar" title="Editar">mode_edit</i></a></td>
 	</tr>
 	</tbody>
 	<tfoot>
