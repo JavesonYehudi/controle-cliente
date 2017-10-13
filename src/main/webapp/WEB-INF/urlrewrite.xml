@@ -47,6 +47,11 @@
         <from>*/funcionario/**</from>
         <to>/index.html</to>
     </rule>
+
+    <rule match-type="wildcard">
+        <from>*/parcela/**</from>
+        <to>/index.html</to>
+    </rule>
     <!--
     <rule>
         <note>

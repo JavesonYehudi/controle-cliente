@@ -43,6 +43,9 @@ app.config([ '$locationProvider', '$routeProvider',
 			}).when('/funcionario/:funcionarioId', {
 				template : '<funcionario-save></funcionario-save>',
 				controller : widgetsController
+			}).when('/parcela/:compraId', {
+				template : '<parcela-modal></parcela-modal>',
+				controller : widgetsController
 			}).otherwise('/cliente');
 			// configure html5 to get links working on jsfiddle
 			$locationProvider.html5Mode(true);

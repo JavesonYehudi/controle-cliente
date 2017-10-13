@@ -17,6 +17,8 @@
     
     <!-- Angular Material style sheet -->
 	<link rel="stylesheet" href="resources/css/angular-material.min.css">
+	<link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet">
 
 	<!-- bootstrap style sheet -->
 	<link rel="stylesheet" href="resources/css/bootstrap.min.css">
@@ -27,7 +29,7 @@
 <body>
 
 	<section layout="row" flex layout-fill ng-controller="SideNaveController">
-		<md-sidenav class="md-sidenav-left" md-component-id="left" md-is-locked-open="$mdMedia('gt-sm')" md-whiteframe="2">
+		<md-sidenav class="md-sidenav-left" md-component-id="left" md-is-locked-open="$mdMedia('gt-sm')" md-whiteframe="4">
 			<md-toolbar class="md-theme-indigo">
 				<h1 class="md-toolbar-tools">MARLENE JOIAS</h1>
 			</md-toolbar>
@@ -181,6 +183,10 @@
     <script src="resources/js/app/loading/loading.module.js"></script>
     <script src="resources/js/app/loading/loading.component.js"></script>
     
+    <!-- Parcela -->
+    <script src="resources/js/app/parcela/parcela-modal.module.js"></script>
+    <script src="resources/js/app/parcela/parcela-modal.component.js"></script>
+
     <!-- Erro Message -->
     <script src="resources/js/app/error-message/error-message.module.js"></script>
     <script src="resources/js/app/error-message/error-message.component.js"></script>

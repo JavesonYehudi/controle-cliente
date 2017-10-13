@@ -15,7 +15,11 @@
 	<tr ng-repeat="funcionario in funcionarios">
 		<td style="text-transform: uppercase;">{{funcionario.id}}</td>
 		<td style="text-transform: uppercase;">{{funcionario.nome}}</td>
-		<td style="text-transform: uppercase;"><a href="funcionario/{{funcionario.id}}">Editar</a></td>
+		<td style="text-transform: uppercase;">
+			<a href="funcionario/{{funcionario.id}}">
+				<i class="material-icons"alt="Editar" title="Editar">mode_edit</i>
+			</a>
+		</td>
 	</tr>
 	</tbody>
 	<tfoot>

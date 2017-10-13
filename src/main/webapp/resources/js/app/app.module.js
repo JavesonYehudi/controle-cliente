@@ -7,5 +7,6 @@ var app = angular.module('controleClienteApp',
 		'loading', 'errorMessage', 
 		'ngRoute', 'ngCpfCnpj',
 		'ui.mask', 'ngMaterial', 
-		'botaoHistorico', 'smart-table'
+		'botaoHistorico', 'smart-table',
+		'parcelaModal'
 	]);

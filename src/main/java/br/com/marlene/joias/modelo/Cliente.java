@@ -35,13 +35,11 @@ public class Cliente implements Serializable {
 	private List<Endereco> enderecos;
 	private List<Documento> documentos;
 	private List<Telefone> telefones;
-	private List<Compra> compras;
 
 	public Cliente() {
 		enderecos = new ArrayList<>();
 		documentos = new ArrayList<>();
 		telefones = new ArrayList<>();
-		compras = new ArrayList<>();
 	}
 
 	public Cliente(BigInteger id, String nome) {
@@ -131,16 +129,6 @@ public class Cliente implements Serializable {
 
 	public void setTelefones(List<Telefone> telefones) {
 		this.telefones = telefones;
-	}
-
-	@OneToMany(cascade = CascadeType.ALL)
-	@JoinColumn(name = "cliente_id")
-	public List<Compra> getCompras() {
-		return compras;
-	}
-
-	public void setCompras(List<Compra> compras) {
-		this.compras = compras;
 	}
 
 	@Override

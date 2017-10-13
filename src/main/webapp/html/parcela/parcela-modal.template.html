@@ -1,0 +1,31 @@
+<button ng-click="$ctrl.printDiv('parcelas')">Imprimir</button>
+<div id="parcelas">
+	<md-card ng-repeat="parcela in $ctrl.compra.parcelas track by $index">
+		<md-card-title>
+			<md-card-title-text>
+				<span class="md-headline">Parcela {{$index + 1}}</span>
+			</md-card-title-text>
+		</md-card-title>
+		<md-card-content>
+			<div layout-gt-sm="row">
+				<div class="col-md-8"><label>Nome: </label> {{$ctrl.compra.cliente.nome}} </div>
+				<div class="col-md-4"><label>CPF: </label> {{$ctrl.compra.cliente.documentos[0].numero}}</div>
+			</div>
+			<div layout-gt-sm="row">
+				<div class="col-md-8"><label>Valor da parcela:</label> {{parcela.valorVencimento | currency: "R$" : 2}}</div>
+				<div class="col-md-4"><label>Data de vencimento:</label> {{parcela.dataVencimento | date: 'dd/MM/yyyy'}}</div>
+			</div>
+			<div layout-gt-sm="row">
+				<div class="col-md-4">
+					<label>Bairro:</label> {{$ctrl.compra.cliente.enderecos[0].bairro}}
+				</div>
+				<div class="col-md-4">
+					<label>Logradouro:</label> {{$ctrl.compra.cliente.enderecos[0].logradouro}}
+				</div>
+				<div class="col-md-4">
+					<label>Complemento:</label> {{$ctrl.compra.cliente.enderecos[0].complemento}}
+				</div>
+			</div>
+		</md-card-content>
+	</md-card>
+</div>

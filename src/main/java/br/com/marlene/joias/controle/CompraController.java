@@ -42,7 +42,7 @@ public class CompraController extends GenericController<Compra> {
 	@Get("{id}")
 	@Override
 	public void encontrar(Integer id) {
-		result.use(Results.json()).withoutRoot().from(dao.carrega(BigInteger.valueOf(id.longValue()))).serialize();
+		result.use(Results.json()).withoutRoot().from(dao.carrega(BigInteger.valueOf(id.longValue()))).include("itens", "parcelas", "cliente", "cliente.enderecos", "cliente.documentos").serialize();
 	}
 
 	@Delete("{id}")

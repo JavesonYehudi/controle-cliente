@@ -36,7 +36,10 @@
 		<td style="text-transform: uppercase;">{{compra.dataDeCriacao | date: 'dd/MM/yyyy'}}</td>
 		<td style="text-transform: uppercase;">{{compra.valorDaEntrada | currency: "R$" : 2}}</td>
 		<td style="text-transform: uppercase;">{{compra.parcelas[0].valorVencimento | currency: "R$" : 2}}</td>
-		<td style="text-transform: uppercase;">{{compra.parcelas.length}}</td>
+		<td style="text-transform: uppercase;">
+			<a href="parcela/{{compra.id}}">	{{compra.parcelas.length}}
+			</a>
+		</td>
 		<td style="text-transform: uppercase;">{{compra.itens.length}}</td>
 		<td style="text-transform: uppercase;">{{compra.funcionario.nome}}</td>
 	</tr>
