@@ -33,6 +33,18 @@ function CompraSaveController(Cliente, Compra, Funcionario, $scope, $location) {
 		ctrl.compra.valorDaParcela = calculaPrecoDaParcela(ctrl.compra.itens);
 	}
 
+	ctrl.chageAVista = function(){
+		if(ctrl.aVista){
+			ctrl.compra.valorDaEntrada = calculaPrecoDaEntrada(ctrl.compra.itens);
+			ctrl.compra.valorDaParcela = 0;
+			ctrl.compra.quantidadeDeParcelas = 0;
+		}else{
+			ctrl.compra.valorDaEntrada = 0;
+			ctrl.compra.quantidadeDeParcelas = 1;
+			ctrl.compra.valorDaParcela = calculaPrecoDaParcela(ctrl.compra.itens);
+		}
+	}
+
 	$scope.$on('onProdutoChange', function() {
 		if(ctrl.aVista){
 			ctrl.compra.valorDaEntrada = calculaPrecoDaEntrada(ctrl.compra.itens);
@@ -44,16 +56,14 @@ function CompraSaveController(Cliente, Compra, Funcionario, $scope, $location) {
 	});
 
 	ctrl.onQuantidadeDeParcelaChange = function() {
-		ctrl.compra.valorDaParcela = calculaPrecoDaParcela(ctrl.compra.itens);
-	};
-
-	ctrl.chageAVista = function(){
 		if(ctrl.aVista){
+			ctrl.compra.valorDaEntrada = calculaPrecoDaEntrada(ctrl.compra.itens);
+			ctrl.compra.valorDaParcela = 0;
 			ctrl.compra.quantidadeDeParcelas = 0;
 		}else{
-			ctrl.compra.quantidadeDeParcelas = 1;
+			ctrl.compra.valorDaParcela = calculaPrecoDaParcela(ctrl.compra.itens);
 		}
-	}
+	};
 
 	ctrl.create = function(compra){
 		Compra.save(compra, function(){
@@ -63,19 +73,18 @@ function CompraSaveController(Cliente, Compra, Funcionario, $scope, $location) {
 	
 	function calculaPrecoDaEntrada(itens) {
 		var valorTotalDosItens = 0;
-		for (var i = 0; i < itens.length; i++) {
+		for (var i = 0; i < itens.length; i++)
 			valorTotalDosItens += itens[i].valorUnitario * itens[i].quantidade;
-		}
+
 		return valorTotalDosItens;
 	}
 
 	function calculaPrecoDaParcela(itens) {
 		var valorTotalDosItens = 0;
-		for (var i = 0; i < itens.length; i++) {
+		for (var i = 0; i < itens.length; i++)
 			valorTotalDosItens += itens[i].valorUnitario * itens[i].quantidade;
-		}
-		return (valorTotalDosItens - ctrl.compra.valorDaEntrada)
-				/ ctrl.compra.quantidadeDeParcelas;
+
+		return (valorTotalDosItens - ctrl.compra.valorDaEntrada) / ctrl.compra.quantidadeDeParcelas;
 	}
 
 };

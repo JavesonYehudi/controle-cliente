@@ -5,8 +5,6 @@ function CompraListController(Compra, $scope) {
 	Compra.query(function(retorno){
 		ctrl.compras = retorno;
 	});
-
-	ctrl.itemsByPage = 15;
 };
 
 var compraListModule = angular.module('compraList').component('compraList', {

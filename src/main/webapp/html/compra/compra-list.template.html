@@ -35,9 +35,11 @@
 		</td>
 		<td style="text-transform: uppercase;">{{compra.dataDeCriacao | date: 'dd/MM/yyyy'}}</td>
 		<td style="text-transform: uppercase;">{{compra.valorDaEntrada | currency: "R$" : 2}}</td>
-		<td style="text-transform: uppercase;">{{compra.parcelas[0].valorVencimento | currency: "R$" : 2}}</td>
 		<td style="text-transform: uppercase;">
-			<a href="parcela/{{compra.id}}" ng-disabled="compra.parcelas.length > 0">	{{compra.parcelas.length}}
+			{{compra.parcelas[0].valorVencimento | currency: "R$" : 2}}
+		</td>
+		<td style="text-transform: uppercase;">
+			<a href="parcela/{{compra.id}}">	{{compra.parcelas.length}}
 			</a>
 		</td>
 		<td style="text-transform: uppercase;">{{compra.itens.length}}</td>
@@ -50,11 +52,6 @@
 			<td><strong>{{$ctrl.totalValorDaEntrada | currency: "R$" : 2}}</strong></td>
 			<td><strong>{{$ctrl.totalValorParcelas | currency: "R$" : 2}}</strong></td>
 			<td colspan="3"></td>
-		</tr>
-		<tr>
-			<td colspan="8" class="text-center">
-				<div st-pagination="" st-items-by-page="$ctrl.itemsByPage" st-displayed-pages="7"></div>
-			</td>
 		</tr>
 	</tfoot>
 

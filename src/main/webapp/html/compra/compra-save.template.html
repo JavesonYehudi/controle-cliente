@@ -41,7 +41,7 @@
 				<span class="md-headline">Produtos</span>
 			</md-card-title-text>
 			<div>
-				<input type="checkbox" ng-model="$ctrl.aVista" id="aVista" ng-click="$ctrl.chageAVista()"> À Vista
+				<input type="checkbox" ng-model="$ctrl.aVista" id="aVista" ng-click="$ctrl.chageAVista()" ng-change="$ctrl.onQuantidadeDeParcelaChange()"> À Vista
 			</div>
 			<div ng-repeat="quantidade in $ctrl.quantidadeDeProdutos track by $index" layout-gt-sm="row" >
 				<compra-produto compra="$ctrl.compra" index="$index" style="width: 90%;"></compra-produto>
