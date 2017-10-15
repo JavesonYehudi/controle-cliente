@@ -11,11 +11,11 @@ import java.util.List;
 @Controller
 @Path("funcionarios")
 public class FuncionarioController extends GenericController<Funcionario>{
+
     @Get("")
     @Override
     public void listarTodos() {
         List<Funcionario> lista = dao.lista();
-        System.out.print(lista);
         result.use(Results.json()).withoutRoot().from(lista).serialize();
     }
 
@@ -24,7 +24,6 @@ public class FuncionarioController extends GenericController<Funcionario>{
     @Override
     public void salvar(Funcionario funcionario) {
         try {
-            System.out.println(funcionario);
             dao.salva(funcionario);
             result.use(Results.json()).withoutRoot().from(funcionario).serialize();
         } catch (Exception e) {
@@ -36,7 +35,13 @@ public class FuncionarioController extends GenericController<Funcionario>{
     @Get("{id}")
     @Override
     public void encontrar(Integer id) {
-        result.use(Results.json()).withoutRoot().from(dao.carrega(BigInteger.valueOf(id.longValue()))).serialize();
+        try{
+            result.use(Results.json()).withoutRoot().from(dao.carrega(id)).serialize();
+        }catch (Exception e){
+            e.printStackTrace();
+            result.use(Results.http()).body(e.toString()).setStatusCode(400); //.badRequest(e.toString());
+        }
+
     }
 
     @Delete("{id}")

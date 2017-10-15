@@ -1,14 +1,14 @@
 function CompraSaveController(Cliente, Compra, Funcionario, $scope, $location) {
 	var ctrl = this;
 	ctrl.quantidadeDeProdutos = [];
-	ctrl.aVista = false;
+	ctrl.aVista = true;
 	ctrl.quantidadeDeProdutos.push(0);
 	
 	ctrl.compra = {
 		itens : []
 	};
 
-	ctrl.compra.quantidadeDeParcelas = 1;
+	ctrl.compra.quantidadeDeParcelas = 0;
 	ctrl.compra.valorDaEntrada = 0;
 	ctrl.compra.dataPrimeiraParcela = new Date();
 	ctrl.minDate = new Date();
@@ -34,20 +34,41 @@ function CompraSaveController(Cliente, Compra, Funcionario, $scope, $location) {
 	}
 
 	$scope.$on('onProdutoChange', function() {
-		ctrl.compra.valorDaParcela = calculaPrecoDaParcela(ctrl.compra.itens);
+		if(ctrl.aVista){
+			ctrl.compra.valorDaEntrada = calculaPrecoDaEntrada(ctrl.compra.itens);
+			ctrl.compra.valorDaParcela = 0;
+			ctrl.compra.quantidadeDeParcelas = 0;
+		}else{
+			ctrl.compra.valorDaParcela = calculaPrecoDaParcela(ctrl.compra.itens);
+		}
 	});
 
 	ctrl.onQuantidadeDeParcelaChange = function() {
 		ctrl.compra.valorDaParcela = calculaPrecoDaParcela(ctrl.compra.itens);
 	};
 
+	ctrl.chageAVista = function(){
+		if(ctrl.aVista){
+			ctrl.compra.quantidadeDeParcelas = 0;
+		}else{
+			ctrl.compra.quantidadeDeParcelas = 1;
+		}
+	}
+
 	ctrl.create = function(compra){
-		console.log(compra);
 		Compra.save(compra, function(){
 			$location.path('/compra');
 		});
 	};
 	
+	function calculaPrecoDaEntrada(itens) {
+		var valorTotalDosItens = 0;
+		for (var i = 0; i < itens.length; i++) {
+			valorTotalDosItens += itens[i].valorUnitario * itens[i].quantidade;
+		}
+		return valorTotalDosItens;
+	}
+
 	function calculaPrecoDaParcela(itens) {
 		var valorTotalDosItens = 0;
 		for (var i = 0; i < itens.length; i++) {

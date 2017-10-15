@@ -26,7 +26,8 @@ compraListModule.filter('filterAndSum', function($filter){
 function getTotalParcelas(compraList){
 	var totalValorParcelas = 0;
 	compraList.forEach(compra => {
-		totalValorParcelas += compra.parcelas[0].valorVencimento;
+		if(compra.parcelas.length > 0)
+			totalValorParcelas += compra.parcelas[0].valorVencimento;
 	});	
 	return totalValorParcelas;
 }

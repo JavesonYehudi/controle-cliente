@@ -26,7 +26,7 @@ public class GenericDao<T> {
 	}
 
 	public void salva(T t) {
-		this.getManager().persist(t);
+		this.getManager().merge(t);
 	}
 	
 	public List<T> lista(){

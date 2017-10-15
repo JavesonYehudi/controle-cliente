@@ -40,12 +40,12 @@
 			<md-card-title-text>
 				<span class="md-headline">Produtos</span>
 			</md-card-title-text>
+			<div>
+				<input type="checkbox" ng-model="$ctrl.aVista" id="aVista" ng-click="$ctrl.chageAVista()"> À Vista
+			</div>
 			<div ng-repeat="quantidade in $ctrl.quantidadeDeProdutos track by $index" layout-gt-sm="row" >
 				<compra-produto compra="$ctrl.compra" index="$index" style="width: 90%;"></compra-produto>
-				<md-icon ng-show="$ctrl.quantidadeDeProdutos.length > 1" ng-click="$ctrl.removeProduto($index)" md-svg-src="resources/assets/material-design-icons/content/svg/production/ic_remove_circle_outline_black_24px.svg" aria-label="Remove circle" style="cursor: pointer;"></md-icon>
-			</div>
-			<div>
-				<input type="checkbox" ng-model="$ctrl.aVista" id="aVista"> À Vista
+				<i ng-show="$ctrl.quantidadeDeProdutos.length > 1" ng-click="$ctrl.removeProduto($index)" aria-label="Remove circle" style="cursor: pointer;">remove_circle</i>
 			</div>
 		</md-card-content>
 		<md-button class="md-raised md-primary" ng-click="$ctrl.adicionaProduto($ctrl.quantidadeDeProdutos.length)">Adicionar Produto</md-button>
