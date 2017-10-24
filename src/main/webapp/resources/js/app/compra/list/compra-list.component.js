@@ -21,19 +21,22 @@ compraListModule.filter('filterAndSum', function($filter){
     }
 });
 
-function getTotalParcelas(compraList){
+function getTotalParcelas(compras){
 	var totalValorParcelas = 0;
-	compraList.forEach(compra => {
-		if(compra.parcelas.length > 0)
-			totalValorParcelas += compra.parcelas[0].valorVencimento;
-	});	
+	if(compras != undefined)
+		compras.forEach(compra => {
+			if(compra.parcelas.length > 0)
+				totalValorParcelas += compra.parcelas[0].valorVencimento;
+		});	
 	return totalValorParcelas;
 }
 
-function getTotalEntrada(compraList){
+function getTotalEntrada(compras){
 	var totalValorDaEntrada = 0;
-	compraList.forEach(compra => {
-		totalValorDaEntrada += compra.valorDaEntrada;
-	});	
+	if(compras != undefined)
+		compras.forEach(compra => {
+			if(compra.valorDaEntrada != undefined)
+				totalValorDaEntrada += compra.valorDaEntrada;
+		});
 	return totalValorDaEntrada;
 }

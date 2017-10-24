@@ -45,7 +45,7 @@
 			</div>
 			<div ng-repeat="quantidade in $ctrl.quantidadeDeProdutos track by $index" layout-gt-sm="row" >
 				<compra-produto compra="$ctrl.compra" index="$index" style="width: 90%;"></compra-produto>
-				<i ng-show="$ctrl.quantidadeDeProdutos.length > 1" ng-click="$ctrl.removeProduto($index)" aria-label="Remove circle" style="cursor: pointer;">remove_circle</i>
+				<i class="material-icons" ng-show="$ctrl.quantidadeDeProdutos.length > 1" ng-click="$ctrl.removeProduto($index)" aria-label="Remove circle" style="cursor: pointer;">remove_circle</i>
 			</div>
 		</md-card-content>
 		<md-button class="md-raised md-primary" ng-click="$ctrl.adicionaProduto($ctrl.quantidadeDeProdutos.length)">Adicionar Produto</md-button>

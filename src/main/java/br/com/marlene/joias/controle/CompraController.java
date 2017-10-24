@@ -21,7 +21,7 @@ public class CompraController extends GenericController<Compra> {
 	@Get("")
 	@Override
 	public void listarTodos() {
-		result.use(Results.json()).withoutRoot().from(dao.lista()).include("cliente", "parcelas", "itens", "funcionario").serialize();
+		result.use(Results.json()).withoutRoot().from(dao.lista()).include("cliente", "parcelas", "itens", "funcionario", "itens.produto").serialize();
 	}
 
 	@Post("")

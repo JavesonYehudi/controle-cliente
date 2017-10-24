@@ -27,3 +27,6 @@
 	max-height: 240px;
 }
 
+.md-tooltip.md-show {
+    height: auto !important;
+}

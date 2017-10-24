@@ -42,7 +42,17 @@
 			<a href="parcela/{{compra.id}}">	{{compra.parcelas.length}}
 			</a>
 		</td>
-		<td style="text-transform: uppercase;">{{compra.itens.length}}</td>
+		<td style="text-transform: uppercase; cursor: pointer;">
+			<strong>
+				{{compra.itens.length}}
+			</strong>
+			<i class="material-icons">info</i>
+			<md-tooltip md-delay="0" md-direction="top">
+				<div ng-repeat="item in compra.itens" style="font-size: 14px;">
+					{{item.produto.nome}}
+				</div>
+            </md-tooltip>
+		</td>
 		<td style="text-transform: uppercase;">{{compra.funcionario.nome}}</td>
 	</tr>
 	</tbody>
